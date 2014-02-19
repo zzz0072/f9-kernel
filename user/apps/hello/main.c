@@ -43,7 +43,6 @@ static L4_ThreadId_t __USER_TEXT create_thread(user_struct *user, void (*func)(v
 	child.raw = myself.raw + (++last_thread << 14);
 
 	L4_ThreadControl(child, myself, L4_nilthread, myself, (void *) free_mem);
-	free_mem += UTCB_SIZE + STACK_SIZE;
 
 	start_thread(child, (L4_Word_t)func, free_mem, STACK_SIZE);
 
